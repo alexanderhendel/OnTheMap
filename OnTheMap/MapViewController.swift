@@ -11,7 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate  {
     
-    var pins: StudentInformation!
     var appDelegate: AppDelegate!
     
     // MARK: IBOutlet
@@ -60,6 +59,10 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
                     
                     self.mapView.addAnnotation(pin)
                 }
+                
+                // refresh annotation on the map
+                let center = self.mapView.centerCoordinate
+                self.mapView.centerCoordinate = center
                 
             } else {
             

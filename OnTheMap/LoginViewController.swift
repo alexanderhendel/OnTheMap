@@ -79,6 +79,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 // verify the user&password against the UdacityAPI
                 self.appDelegate.udacityAPI!.verifyLogin(emailTextField.text, password: passwordTextField.text, completionHandler: {completed, error -> Void in
+                    
+                    // stop activity indicator
+                    self.activityIndicator.stopAnimating()
+                    
                     if (completed == true) {
                         
                         NSOperationQueue.mainQueue().addOperationWithBlock {
@@ -97,9 +101,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                         self.appDelegate.newStudent?.lastName = "Doe"
                                         self.appDelegate.newStudent?.uniqueKey = "1234"
                                     }
-                                    
-                                    // stop activity indicator
-                                    self.activityIndicator.stopAnimating()
                                     
                                     // clear input fields
                                     self.passwordTextField.text = ""

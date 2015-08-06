@@ -10,7 +10,6 @@ import UIKit
 
 class TableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var pins: StudentInformation!
     var appDelegate: AppDelegate!
     
     // MARK: functions
@@ -31,7 +30,6 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
         self.appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         // refresh data
-        
         self.view.setNeedsDisplay()
     }
     
