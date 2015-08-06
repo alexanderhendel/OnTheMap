@@ -49,13 +49,18 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
             if (completed == true) {
                 
                 // add pins to global pin object
-                self.appDelegate.pins = pins
+                if let p = pins {
+                    self.appDelegate.pins = p
+                }
                 
                 // show pins on the map
-                for student in self.appDelegate.pins!.students {
+                for student in self.appDelegate.pins {
                 
-                    let pin = Student(student: student,
-                        coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(student.latitude), longitude: CLLocationDegrees(student.longitude)))
+                    var pin = CustomAnnotationPin(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(student.latitude), longitude: CLLocationDegrees(student.longitude)))
+                    
+                    pin.title = student.firstName + " " + student.lastName
+                    pin.subtitle = student.mediaURL
+                    pin.locationName = student.mapString
                     
                     self.mapView.addAnnotation(pin)
                 }
@@ -94,7 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     
     // MARK: MapView Protocol
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        if annotation is Student {
+        if annotation is CustomAnnotationPin {
             let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "studentPin")
             
             pinAnnotationView.pinColor = .Purple
@@ -115,14 +120,14 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        if let annotation = view.annotation as? Student {
+        if let annotation = view.annotation as? CustomAnnotationPin {
                         
-            if let url = NSURL(string: annotation.mediaURL) {
+            if let url = NSURL(string: annotation.subtitle!) {
                 // open the URL in safari
                 UIApplication.sharedApplication().openURL(url)
             } else {
                 // error handling - inform user that now student info can be shown
-                showAlert("Open URL", alertMessage: "There was an error opening the URL '\(annotation.mediaURL)'.")
+                showAlert("Open URL", alertMessage: "There was an error opening the URL '\(annotation.subtitle)'.")
             }
         }
     }

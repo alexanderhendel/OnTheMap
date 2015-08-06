@@ -61,13 +61,7 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
     // MARK: Conform to TableView Protocol
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let count = self.appDelegate.pins?.students.count {
-        
-            return count
-        } else {
-        
-            return 0
-        }
+        return self.appDelegate.pins.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -75,32 +69,28 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
         var myCell: CustomMapTableViewCell!
         myCell = self.tableView.dequeueReusableCellWithIdentifier("StudentCell") as! CustomMapTableViewCell
         
-        if let student = self.appDelegate.pins?.students[indexPath.row] {
+        let student = self.appDelegate.pins[indexPath.row]
         
-            myCell.loadItem(name: student.firstName + " " + student.lastName,
-                            url: student.mediaURL,
-                            location: student.mapString)
-        }
+        myCell.loadItem(name: student.firstName + " " + student.lastName,
+                         url: student.mediaURL,
+                    location: student.mapString)
         
         return myCell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let student = self.appDelegate.pins?.students[indexPath.row] {
+        let student = self.appDelegate.pins[indexPath.row]
         
-            var mediaURL: NSURL!
-            mediaURL = NSURL(string: student.mediaURL)
+        var mediaURL: NSURL!
+        mediaURL = NSURL(string: student.mediaURL)
         
-            if let url = mediaURL {
-                // open the URL in safari
-                UIApplication.sharedApplication().openURL(url)
-            } else {
-                // error handling - inform user that now student info can be shown
-                showAlert("Open URL", alertMessage: "There was an error opening the URL '\(student.mediaURL)'.")
-            }
+        if let url = mediaURL {
+            // open the URL in safari
+            UIApplication.sharedApplication().openURL(url)
         } else {
-            showAlert("Open URL", alertMessage: "There was an error opening the URL.")
+            // error handling - inform user that now student info can be shown
+            showAlert("Open URL", alertMessage: "There was an error opening the URL '\(student.mediaURL)'.")
         }
     }
 }

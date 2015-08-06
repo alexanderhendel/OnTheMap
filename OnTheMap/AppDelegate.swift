@@ -12,16 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var pins: StudentInformation?
-    var udacityAPI: UdacityAPI?
-    var newStudent: Student?
+    var pins: [StudentInformation] = []
+    var udacityAPI: UdacityAPI!
+    var newStudent: StudentInformation!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
-        pins = StudentInformation()
+        // Override point for customization after application launch.
         udacityAPI = UdacityAPI()
-        newStudent = Student(student: nil, coordinate: nil)
+        newStudent = StudentInformation(studentDict: nil)
         
         return true
     }

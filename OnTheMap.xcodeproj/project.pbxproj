@@ -16,12 +16,12 @@
 		4582AF3B1B5E3731006135C4 /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582AF3A1B5E3731006135C4 /* OnTheMapTests.swift */; };
 		4582AF4D1B5E3923006135C4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582AF4C1B5E3923006135C4 /* LoginViewController.swift */; };
 		45A420911B5F5E20004977D1 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A420901B5F5E20004977D1 /* StudentInformation.swift */; };
-		45A420941B5F9254004977D1 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A420931B5F9254004977D1 /* Student.swift */; };
 		45A420961B5F9454004977D1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A420951B5F9454004977D1 /* TableViewController.swift */; };
 		45A420981B5F9460004977D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A420971B5F9460004977D1 /* MapViewController.swift */; };
 		45A4209A1B5F997A004977D1 /* NewPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A420991B5F997A004977D1 /* NewPinViewController.swift */; };
 		45B563631B5EB7CA0098C43D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B563621B5EB7CA0098C43D /* Storyboard.storyboard */; };
 		45BE78991B61520000003787 /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE78981B61520000003787 /* ParseAPI.swift */; };
+		45EED1441B73E9B700AFEA48 /* CustomAnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED1431B73E9B700AFEA48 /* CustomAnnotationPin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,12 +48,12 @@
 		4582AF3A1B5E3731006135C4 /* OnTheMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapTests.swift; sourceTree = "<group>"; };
 		4582AF4C1B5E3923006135C4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		45A420901B5F5E20004977D1 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
-		45A420931B5F9254004977D1 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		45A420951B5F9454004977D1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		45A420971B5F9460004977D1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		45A420991B5F997A004977D1 /* NewPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPinViewController.swift; sourceTree = "<group>"; };
 		45B563621B5EB7CA0098C43D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		45BE78981B61520000003787 /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
+		45EED1431B73E9B700AFEA48 /* CustomAnnotationPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +159,7 @@
 				45A420971B5F9460004977D1 /* MapViewController.swift */,
 				45A420991B5F997A004977D1 /* NewPinViewController.swift */,
 				456A213B1B6CC71000FD254B /* CustomMapTableViewCell.swift */,
+				45EED1431B73E9B700AFEA48 /* CustomAnnotationPin.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -175,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				45A420901B5F5E20004977D1 /* StudentInformation.swift */,
-				45A420931B5F9254004977D1 /* Student.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -299,10 +299,10 @@
 				4582AF4D1B5E3923006135C4 /* LoginViewController.swift in Sources */,
 				456A213C1B6CC71000FD254B /* CustomMapTableViewCell.swift in Sources */,
 				4582AF231B5E3731006135C4 /* AppDelegate.swift in Sources */,
+				45EED1441B73E9B700AFEA48 /* CustomAnnotationPin.swift in Sources */,
 				45BE78991B61520000003787 /* ParseAPI.swift in Sources */,
 				45817B951B5E40F000E75A58 /* UdacityAPI.swift in Sources */,
 				45A4209A1B5F997A004977D1 /* NewPinViewController.swift in Sources */,
-				45A420941B5F9254004977D1 /* Student.swift in Sources */,
 				45A420981B5F9460004977D1 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

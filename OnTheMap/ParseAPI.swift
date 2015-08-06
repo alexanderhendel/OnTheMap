@@ -23,7 +23,7 @@ class ParseAPI: NSObject {
      *
      * Optional({"results":[{"createdAt":"2015-08-01T05:59:00.350Z","firstName":"Ivan","lastName":"lares","latitude":33.836318,"longitude":-118.340038,"mapString":"torrance ca","mediaURL":"google.com","objectId":"GeDBIGi8Pk","uniqueKey":"u35788505","updatedAt":"2015-08-01T05:59:00.350Z"},
     */
-    func getStudentLocations(limit: Int, completionHandler: ((Bool, NSError?, StudentInformation?) -> Void)!) -> Void {
+    func getStudentLocations(limit: Int, completionHandler: ((Bool, NSError?, [StudentInformation]?) -> Void)!) -> Void {
     
         // make request URL string
         var url: String
@@ -52,25 +52,15 @@ class ParseAPI: NSObject {
                 // parse user name
                 if var results = json["results"] as? [[String: AnyObject]] {
                     
-                    // mark fill appDelegate.pins
-                    var pins = StudentInformation()
+                    var newPins: [StudentInformation] = []
                     
-                    for pin in results {
+                    for student in results {
                     
-                        var student = Student(student: nil, coordinate: nil)
-                        
-                        student.firstName = pin["firstName"] as! String
-                        student.lastName = pin["lastName"] as! String
-                        student.latitude = pin["latitude"] as! Float
-                        student.longitude = pin["longitude"] as! Float
-                        student.mapString = pin["mapString"] as! String
-                        student.uniqueKey = pin["uniqueKey"] as! String
-                        student.mediaURL = pin["mediaURL"] as! String
-                        
-                        pins.students.append(student)
+                        var s = StudentInformation(studentDict: student)
+                        newPins.append(s)
                     }
                     
-                    return completionHandler(true, nil, pins)
+                    return completionHandler(true, nil, newPins)
                 } else {
                     
                     var err: NSError?
@@ -97,7 +87,7 @@ class ParseAPI: NSObject {
         task.resume()
     }
     
-    func getSpecificStudent(limit: Int, student: Student) {
+    func getSpecificStudent(limit: Int, student: StudentInformation) {
         // make request URL string
         var url: String
         url = PAPI_STRING + "?" + PAPI_PARAM_LIMIT + String(limit) + "&" +
@@ -119,7 +109,7 @@ class ParseAPI: NSObject {
         task.resume()
     }
     
-    func postStudentLocation(limit: Int, student: Student, completionHandler: ((Bool, NSError?) -> Void)!) -> Void {
+    func postStudentLocation(limit: Int, student: StudentInformation, completionHandler: ((Bool, NSError?) -> Void)!) -> Void {
     
         // make request URL string
         var url: String
